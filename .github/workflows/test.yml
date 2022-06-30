@@ -8,6 +8,8 @@ jobs:
         run: |
           echo "FROM mysql" | docker build --tag=mytestsql -
 
+      - uses: actions/checkout@v3
+
       - name: Run the CoGuard CLI Action
         uses: ./action.yml
         with:
