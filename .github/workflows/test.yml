@@ -10,6 +10,10 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      - run: |
+          ls
+          tree
+
       - name: Run the CoGuard CLI Action
         uses: ./action.yml
         with:
