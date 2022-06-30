@@ -15,7 +15,7 @@ jobs:
           tree
 
       - name: Run the CoGuard CLI Action
-        uses: ./action.yml
+        uses: ./
         with:
           dockerImageName: mytestsql
           username: ${{ secrets.CoGuardUserName }}
