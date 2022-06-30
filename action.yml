@@ -1,0 +1,48 @@
+name: CoGuard Docker Image Scan
+author: CoGuard (coguard.io)
+description: Discovers known configuration files in Docker images, and scans them using CoGuard.
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+
+inputs:
+  dockerImageName:
+    description: The Docker image name after it has been built
+    required: true
+  failLevel:
+    description: The minimum level of severity of failed checks to fail this build.
+    required: false
+    default: 1
+  username:
+    description: |
+      The username as registred on coguard.io. If you are not registered, please
+      go to https://portal.coguard.io, and click on "Log In" to register.
+    required: true
+  password:
+    description: The password for the user identified by username.
+
+runs:
+  using: "composite"
+  steps:
+    - id: setup-python
+      name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.9"
+
+    - id: install-coguard-cli
+      name: Install CoGuard CLI
+      run: |
+        python -m pip install --upgrade --no-cache-dir pip
+        python -m pip install --no-cache-dir coguard-cli
+      shell: bash
+
+    - id: run-coguard-cli
+      name: Run CoGuard CLI on specified image
+      env:
+        COGUARD_USER_NAME: ${{inputs.username}}
+        COGUARD_PASSWORD: ${{inputs.password}}
+      run: |
+        coguard --minimum-fail-level=${{inputs.failLevel}} docker-image ${{inputs.dockerImageName}}
+      shell: bash
+# TODO add minimum fail level and environment username and password section to CoGuard CLI

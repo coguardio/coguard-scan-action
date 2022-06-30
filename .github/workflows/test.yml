@@ -1,0 +1,16 @@
+name: Testing if a normal workflow works
+on: [push]
+jobs:
+  create-test-image-and-run-coguard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build an example Docker
+        run: |
+          echo "FROM mysql" | docker build --tag=mytestsql -
+
+      - name: Run the CoGuard CLI Action
+        uses: ./action.yml
+        with:
+          dockerImageName: mytestsql
+          username: ${{ secrets.CoGuardUserName }}
+          password: ${{ secrets.CoGuardPassword }}
