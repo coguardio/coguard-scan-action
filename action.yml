@@ -7,7 +7,7 @@ branding:
 
 inputs:
   dockerImageName:
-    description: The Docker image name after it has been built
+    description: The Docker image name which the CoGuard CLI should scan
     required: true
   failLevel:
     description: The minimum level of severity of failed checks to fail this build.
