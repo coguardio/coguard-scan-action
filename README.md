@@ -30,7 +30,7 @@ jobs:
 
 | Parameter         | type     | meaning | required | default |
 |--------------|-----------|------------|-----------|---------|
-| dockerImageName | string | The Docker image name which the CoGuard CLI should scan. | true    | N/A |
-| failLevel | int |  The minimum level of severity of failed checks to fail this build. | false | 1   |
-| username | string | The username as registred on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | true | N/A |
-| password | string | The password for the user identified by username. | false | 1   | N/A |
+| `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `true`    | N/A |
+| `failLevel` | `int` |  The minimum level of severity of failed checks to fail this build. | `false` | `1`   |
+| `username` | `string` | The username as registred on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | `true` | N/A |
+| `password` | `string` | The password for the user identified by username. | `false` | N/A |
