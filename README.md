@@ -5,7 +5,7 @@ This action is scanning Docker images using the
 
 # Example usage:
 
-```
+```yaml
 name: Including CoGuard into your GitHub Action
 on: [push]
 jobs:
