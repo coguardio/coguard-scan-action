@@ -20,3 +20,4 @@ jobs:
           dockerImageName: mytestsql
           username: ${{ secrets.CoGuardUserName }}
           password: ${{ secrets.CoGuardPassword }}
+          failLevel: 7
