@@ -32,5 +32,10 @@ jobs:
 |--------------|-----------|------------|-----------|---------|
 | `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `true`    | N/A |
 | `failLevel` | `int` |  The minimum level of severity of failed checks to fail this build. | `false` | `1`   |
-| `username` | `string` | The username as registred on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | `true` | N/A |
+| `username` | `string` | The username as registered on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | `true` | N/A |
 | `password` | `string` | The password for the user identified by username. | `false` | N/A |
+
+# How to obtain a CoGuard account
+
+You can either register on [https://portal.coguard.io](https://portal.coguard.io) or
+by running the [coguard-cli](https://github.com/coguardio/coguard-cli) locally.
