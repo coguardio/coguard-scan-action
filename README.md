@@ -19,7 +19,7 @@ jobs:
           echo "Your build commands go here"
 
       - name: Run the CoGuard CLI Action
-        uses: actions/coguard-image-scan-action
+        uses: coguardio/actions/coguard-image-scan-action
         with:
           dockerImageName: YourImageName
           username: ${{ secrets.CoGuardUserName }}
