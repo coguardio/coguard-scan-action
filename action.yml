@@ -2,8 +2,8 @@ name: CoGuard Docker Image Scan
 author: CoGuard (coguard.io)
 description: Discovers known configuration files in Docker images, and scans them using CoGuard.
 branding:
-  icon: "alert-triangle"
-  color: "yellow"
+  icon: "package"
+  color: "gray-dark"
 
 inputs:
   dockerImageName:
