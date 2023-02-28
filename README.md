@@ -19,7 +19,6 @@ jobs:
       - name: Run the CoGuard CLI Action
         uses: actions/coguard-scan-action
         with:
-          dockerImageName: YourImageName
           username: ${{ secrets.CoGuardUserName }}
           password: ${{ secrets.CoGuardPassword }}
 ```
