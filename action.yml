@@ -57,4 +57,5 @@ runs:
             coguard --minimum-fail-level=${{inputs.failLevel}} docker-image ${{inputs.dockerImageName}};
         else
             coguard --minimum-fail-level=${{inputs.failLevel}} folder .;
+        fi;
       shell: bash
