@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run the CoGuard CLI Action
-        uses: actions/coguard-scan-action
+        uses: coguardio/coguard-scan-action@v0.2.2
         with:
           username: ${{ secrets.CoGuardUserName }}
           password: ${{ secrets.CoGuardPassword }}
@@ -39,7 +39,7 @@ jobs:
           echo "Your build commands go here"
 
       - name: Run the CoGuard CLI Action
-        uses: actions/coguard-docker-image-scan
+        uses: coguardio/coguard-scan-action@v0.2.2
         with:
           dockerImageName: YourImageName
           username: ${{ secrets.CoGuardUserName }}
@@ -51,7 +51,7 @@ jobs:
 
 | Parameter         | type     | meaning | required | default |
 |--------------|-----------|------------|-----------|---------|
-| `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `true`    | N/A |
+| `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `true`    | `""` |
 | `repositoryScan`    | `bool`  | The indicator if you wish to scan the repository (automatically run if `dockerImageName` is not provided) | `false` | `true` |
 | `failLevel` | `int` |  The minimum level of severity of failed checks to fail this build. | `false` | `1`   |
 | `username` | `string` | The username as registered on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | `true` | N/A |
