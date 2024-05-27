@@ -54,6 +54,7 @@ runs:
       name: Checking validity of input parameters
       run: |
         test ${{inputs.outputFormat}} = "formatted" -o ${{inputs.outputFormat}} = "sarif" -o ${{inputs.outputFormat}} = "json"
+        test ${{inputs.failLevel}} -ge 1 -a ${{inputs.failLevel}} -le 6
       shell: bash
 
     - id: run-coguard-cli

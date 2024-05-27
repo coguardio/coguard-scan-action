@@ -69,12 +69,11 @@ jobs:
           password: ${{ secrets.CoGuardPassword }}
           outputFormat: sarif
       - name: Upload SARIF file
+        if ${{ failure() }}
         uses: github/codeql-action/upload-sarif@a57c67b89589d2d13d5ac85a9fc4679c7539f94c
         with:
           sarif_file: result.sarif.json
           category: CoGuard
-      - name: Fail job if there is a result
-        run: test -z $(jq -r '.runs[0].results[]' result.sarif.json)
 ```
 
 # Parameters which this action accepts
