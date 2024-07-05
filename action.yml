@@ -20,6 +20,10 @@ inputs:
     description: The minimum level of severity of failed checks to fail this build.
     required: false
     default: 1
+  outputFormat:
+    description: The output format of the coguard scan (`formatted`, `json`, `sarif`)
+    required: false
+    default: formatted
   username:
     description: |
       The username as registred on coguard.io. If you are not registered, please
@@ -46,6 +50,13 @@ runs:
 
     - uses: actions/checkout@v3
 
+    - id: input-check
+      name: Checking validity of input parameters
+      run: |
+        test ${{inputs.outputFormat}} = "formatted" -o ${{inputs.outputFormat}} = "sarif" -o ${{inputs.outputFormat}} = "json"
+        test ${{inputs.failLevel}} -ge 1 -a ${{inputs.failLevel}} -le 6
+      shell: bash
+
     - id: run-coguard-cli
       name: Run CoGuard CLI on specified image or repository
       env:
@@ -54,8 +65,8 @@ runs:
       run: |
         if [[ ! -n docker-image ]]
         then
-            coguard --minimum-fail-level=${{inputs.failLevel}} docker-image ${{inputs.dockerImageName}};
+            coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
         else
-            coguard --minimum-fail-level=${{inputs.failLevel}} folder .;
+            coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder .;
         fi;
       shell: bash
