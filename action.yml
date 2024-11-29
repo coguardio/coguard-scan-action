@@ -63,7 +63,7 @@ runs:
         COGUARD_USER_NAME: ${{inputs.username}}
         COGUARD_PASSWORD: ${{inputs.password}}
       run: |
-        if [[ ! -n docker-image ]]
+        if [[ ! -n ${{inputs.dockerImageName}} ]]
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
         else
