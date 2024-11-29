@@ -20,6 +20,10 @@ inputs:
     description: The minimum level of severity of failed checks to fail this build.
     required: false
     default: 1
+  workingDirectory:
+    description: The working directory where the acton should take place
+    required: false
+    default: "."
   outputFormat:
     description: The output format of the coguard scan (`formatted`, `json`, `sarif`)
     required: false
@@ -67,6 +71,6 @@ runs:
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
         else
-            coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder .;
+            coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder "${{inputs.workingDirectory}}";
         fi;
       shell: bash
