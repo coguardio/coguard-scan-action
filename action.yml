@@ -60,8 +60,6 @@ runs:
         python -m pip install --no-cache-dir coguard-cli
       shell: bash
 
-    - uses: actions/checkout@v3
-
     - id: input-check
       name: Checking validity of input parameters
       run: |
