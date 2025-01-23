@@ -80,8 +80,10 @@ runs:
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
         elif [[ "${{inputs.repositoryScan}}" = "true" ]]
+        then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder "${{inputs.workingDirectory}}";
         elif [[ -n "${{inputs.getLatestReport}}" ]]
+        then
             coguard account download-cluster-report "${{inputs.getLatestReport}}" "${{inputs.workingDirectory}}"/"${{inputs.getLatestReport}}"_DOWNLOAD.zip;
         else
             echo "No valid instruction was provided. Please choose from the different scan options (docker-image, repository) to proceeed.";
