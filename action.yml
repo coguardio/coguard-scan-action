@@ -21,8 +21,7 @@ inputs:
       If you wish to extract the .zip file and its contents for the latest scan,
       use this option and set it to the cluster name you are interested in.
       The output file will be written into the location specified in `workingDirectory`
-      using the filename `{cluster_name}_DOWNLOAD.zip`, where `cluster_name` is
-      the value of this variable.
+      using the filename `cluster_download.zip`.
     required: false
     default: ""
   failLevel:
@@ -84,7 +83,7 @@ runs:
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder "${{inputs.workingDirectory}}";
         elif [[ -n "${{inputs.getLatestReport}}" ]]
         then
-            coguard account download-cluster-report "${{inputs.getLatestReport}}" "${{inputs.workingDirectory}}"/"${{inputs.getLatestReport}}"_DOWNLOAD.zip;
+            coguard account download-cluster-report "${{inputs.getLatestReport}}" "${{inputs.workingDirectory}}"/cluster_download.zip;
         else
             echo "No valid instruction was provided. Please choose from the different scan options (docker-image, repository) to proceeed.";
             exit 1;
