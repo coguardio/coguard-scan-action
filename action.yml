@@ -16,6 +16,15 @@ inputs:
       `dockerImageName` is not specified.
     required: false
     default: true
+  getLatestReport:
+    description: |
+      If you wish to extract the .zip file and its contents for the latest scan,
+      use this option and set it to the cluster name you are interested in.
+      The output file will be written into the location specified in `workingDirectory`
+      using the filename `{cluster_name}_DOWNLOAD.zip`, where `cluster_name` is
+      the value of this variable.
+    required: false
+    default: ""
   failLevel:
     description: The minimum level of severity of failed checks to fail this build.
     required: false
@@ -70,7 +79,12 @@ runs:
         if [[ -n "${{inputs.dockerImageName}}" ]]
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
-        else
+        elif [[ "${{inputs.repositoryScan}}" = "true" ]]
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder "${{inputs.workingDirectory}}";
+        elif [[ -n "${{inputs.getLatestReport}}" ]]
+            coguard account download-cluster-report "${{inputs.getLatestReport}}" "${{inputs.workingDirectory}}"/"${{inputs.getLatestReport}}"_DOWNLOAD.zip;
+        else
+            echo "No valid instruction was provided. Please choose from the different scan options (docker-image, repository) to proceeed.";
+            exit 1;
         fi;
       shell: bash
