@@ -33,7 +33,9 @@ inputs:
     required: false
     default: "."
   outputFormat:
-    description: The output format of the coguard scan (`formatted`, `json`, `sarif`)
+    description: |
+      The output format of the coguard scan (`formatted`, `json`, `sarif`, `markdown`).
+      You can also combine each of them via a comma, leading to multiple outputs.
     required: false
     default: formatted
   username:

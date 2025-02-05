@@ -84,7 +84,7 @@ jobs:
 | `repositoryScan`    | `bool`  | The indicator if you wish to scan the repository | `false` | `true` |
 | `getLatestReport`    | `string`  | Lets you download the latest report .zip for your cluster | `false` | `""` |
 | `failLevel` | `int` |  The minimum level of severity of failed checks to fail this build. | `false` | `1`   |
-| `outputFormat` | `string` | The output format of the results. Supported are `json`, `sarif`, `formatted` | `false` | `formatted` |
+| `outputFormat` | `string` | The output format of the results. Supported are `json`, `sarif`, `formatted`, `markdown` (combine via comma to choose multiple). | `false` | `formatted` |
 | `username` | `string` | The username as registered on coguard.io. If you are not registered, please go to https://portal.coguard.io, and click on "Log In" to register. | `true` | N/A |
 | `password` | `string` | The password for the user identified by username. | `false` | N/A |
 
