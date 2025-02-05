@@ -65,7 +65,7 @@ runs:
     - id: input-check
       name: Checking validity of input parameters
       run: |
-        if [[ ! "${{inputs.outputFormat}}" =~ '^(json|markdown|sarif|formatted)(,(json|markdown|sarif|formatted))*$' ]]; then
+        if [[ ! "${{inputs.outputFormat}}" =~ ^(json|markdown|sarif|formatted)(,(json|markdown|sarif|formatted))*$ ]]; then
           echo "Invalid input";
           exit 1;
         fi;
