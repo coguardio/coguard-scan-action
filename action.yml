@@ -69,8 +69,7 @@ runs:
         if [[ ! "${{inputs.outputFormat}}" =~ "$OUTPUT_FORMAT_REGEX" ]]; then
           echo "Invalid input";
           exit 1;
-        fi
-        test ${{inputs.outputFormat}} = "formatted" -o ${{inputs.outputFormat}} = "sarif" -o ${{inputs.outputFormat}} = "json"
+        fi;
         test ${{inputs.failLevel}} -ge 1 -a ${{inputs.failLevel}} -le 6
       shell: bash
 
