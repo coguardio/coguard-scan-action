@@ -80,7 +80,8 @@ jobs:
 
 | Parameter         | type     | meaning | required | default |
 |--------------|-----------|------------|-----------|---------|
-| `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `true`    | `""` |
+| `dockerImageName` | `string` | The Docker image name which the CoGuard CLI should scan. | `false`    | `""` |
+| `dockerContainerName` | `string` | The Docker container name which the CoGuard CLI should scan. | `false`    | `""` |
 | `repositoryScan`    | `bool`  | The indicator if you wish to scan the repository | `false` | `true` |
 | `getLatestReport`    | `string`  | Lets you download the latest report .zip for your cluster | `false` | `""` |
 | `failLevel` | `int` |  The minimum level of severity of failed checks to fail this build. | `false` | `1`   |
