@@ -10,6 +10,10 @@ inputs:
     description: The Docker image name which the CoGuard CLI should scan
     required: false
     default: ""
+  dockerContainerName:
+    description: The Docker container name which the CoGuard CLI should scan
+    required: false
+    default: ""
   repositoryScan:
     description: |
       Whether or not to scan the given repository. Automatically is chosen when
@@ -81,6 +85,9 @@ runs:
         if [[ -n "${{inputs.dockerImageName}}" ]]
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-image ${{inputs.dockerImageName}};
+        elif [[ -n "${{inputs.dockerContainerName}}" ]]
+        then
+            coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} docker-container ${{inputs.dockerContainerName}};
         elif [[ "${{inputs.repositoryScan}}" = "true" ]]
         then
             coguard --minimum-fail-level=${{inputs.failLevel}} --output-format=${{inputs.outputFormat}} folder "${{inputs.workingDirectory}}";
